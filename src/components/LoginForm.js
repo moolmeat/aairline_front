@@ -11,21 +11,9 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" />
+      <button type="submit">로그인</button>
     </form>
   );
 };

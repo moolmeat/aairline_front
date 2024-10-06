@@ -1,17 +1,24 @@
 import axios from 'axios';
 
-const API_URL = '/users';
+const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': `${process.env.REACT_APP_API_URL}`
+    },
+    withCredentials: true
+});
 
 export const signup = async (userData) => {
-  return axios.post(`${API_URL}/signup`, userData);
+  return axiosInstance.post(`/users/signup`, userData);
 };
 
 export const login = async (loginData) => {
-  return axios.post(`${API_URL}/signin`, loginData);
+  return axiosInstance.post(`/users/signin`, loginData);
 };
 
 export const refreshToken = async () => {
-  return axios.get(`${API_URL}/refresh`, {
+  return axiosInstance.get(`/users/refresh`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
