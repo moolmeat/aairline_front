@@ -35,3 +35,14 @@ export const getAuctionItems = async (page, size) => {
     throw error;
   }
 };
+
+export const getAuctionById = async (auctionItemId) => {
+  try {
+    const response = await axiosInstance.get(`/auction/${auctionItemId}`);
+
+    return response.data.data;  // 응답 데이터에서 실제 경매 정보를 반환
+  } catch (error) {
+    console.error('Failed to fetch auction details', error);
+    throw error;
+  }
+};
